@@ -3,6 +3,6 @@ jobs:
   include:
     script:
      - apt install optipng
-      
+     - find . -name "*png"      
 
 
