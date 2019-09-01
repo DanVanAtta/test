@@ -4,5 +4,4 @@ jobs:
     install: skip
     script:
      - ./travis/build
-    deploy:
        
