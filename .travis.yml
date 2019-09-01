@@ -1,8 +1,8 @@
 dist: xenial
+sudo: true
 jobs:
   include:
+    install: skip
     script:
-     - apt install optipng
-     - find . -name "*png"      
-
-
+     - sudo apt install optipng
+  
