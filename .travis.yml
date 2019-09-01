@@ -1,0 +1,8 @@
+dist: xenial
+jobs:
+  include:
+    script:
+     - apt install optipng
+      
+
+
