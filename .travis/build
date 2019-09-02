@@ -2,14 +2,14 @@
 
 
 sudo apt install optipng
-find . -name "*png" | head | xargs optipng -preserve -o7 {} 
+find . -name "*png" | head | xargs optipng -preserve -o7
 # 2>&1 | grep -iE "png|decrease|error|warn"
 
 git config --global user.email "tripleabuilderbot@gmail.com"
 git config --global user.name "tripleabuilderbot"
 
+git checkout -b master
 git status
-git branch -m master
 git commit . -m "Apply optipng compression on all png files"
 
 git status
