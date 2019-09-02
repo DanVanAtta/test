@@ -4,7 +4,7 @@ jobs:
   include:
     install: skip
     script:
-      - ./.travis/run_optipng
+      - ./.travis/run_optipng || travis_terminate 1
       - ./.travis/zip_assets
     deploy:
       provider: releases
