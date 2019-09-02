@@ -12,3 +12,5 @@ jobs:
       file: artifacts/*
       skip_cleanup: true
       name: $TRAVIS_BUILD_NUMBER
+      on: {tags: false, branch: master}
+
