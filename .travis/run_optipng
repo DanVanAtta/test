@@ -14,10 +14,11 @@ find . -name "*png" | head -100 | xargs optipng -preserve -o7 2>&1 | grep -iE "p
 ## If any files are changed, we'll commit them here
 ## If we commit and push, that will trigger a new build.
 ## If we trigger a new build, terminate the current build so we avoid deploying artifacts
-if [ git commit . -m "Apply optipng compression on all png files" ]; then
+git commit . -m "Apply optipng compression on all png files" &&
+(
   git remote add repo "https://${BOT_AUTH_TOKEN}@github.com/DanVanAtta/test.git" &> /dev/null
   git push --quiet --set-upstream repo master
   echo "Committed compressed files. Terminating current build to abort deployment"
   exit 1
-fi
+)
 
