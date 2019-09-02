@@ -9,7 +9,9 @@ git config --global user.name "tripleabuilderbot"
 
 ## find all PNG files, run lossless compression
 ## Filter output for errors, the line stating which file is being proccessed and percentage decrease
-find . -name "*png" | head -150 | xargs optipng -preserve -o7 2>&1 | grep -iE "png|% decrease|error|warn"
+find . -name "*png" | head -200 | xargs optipng -preserve -o7 2>&1 | grep -iE "png|% decrease|error|warn"
+
+set -e
 
 ## If any files are changed, we'll commit them here
 ## If we commit and push, that will trigger a new build.
