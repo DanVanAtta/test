@@ -1,6 +1,7 @@
 #!/bin/bash
 
-(cd game_headed_assets; zip -r game_headed_assets.zip *)
+set -eu
+(cd game_headed_assets || exit 1; zip -r game_headed_assets.zip -- *)
 
 mkdir -p artifacts/
 mv game_headed_assets/game_headed_assets.zip ./artifacts/

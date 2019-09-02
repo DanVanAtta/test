@@ -2,8 +2,9 @@ dist: xenial
 if: tag is blank
 install: skip
 script:
-  - ./.travis/run_optipng || travis_terminate 1
+  - ./.travis/run_optipng
   - ./.travis/zip_assets
+  - ./.travis/push_tag
 deploy:
   provider: releases
   api_key: "$BOT_AUTH_TOKEN"

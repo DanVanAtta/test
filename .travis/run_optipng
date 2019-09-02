@@ -1,5 +1,6 @@
 #!/bin/bash
 
+readonly REPO_URL="https://${BOT_AUTH_TOKEN}@github.com/DanVanAtta/test.git"
 sudo apt install optipng
 
 git checkout  master
@@ -9,8 +10,12 @@ git config --global user.name "tripleabuilderbot"
 
 ## find all PNG files, run lossless compression
 ## Filter output for errors, the line stating which file is being proccessed and percentage decrease
-find . -name "*png" | head -200 | xargs optipng -preserve -o7 2>&1 | grep -iE "^** Processing|% decrease|error|warn"
+find . -name "*png" \
+  | xargs optipng -preserve -o7 2>&1 \
+  | grep -iE "^** Processing|% decrease|error|warn"
 
+## Toggle flag to fail on non-zero exit code.
+## This will cause Travis to discontinue the build if we terminate with non-zero.
 set -e
 
 ## If any files are changed, we'll commit them here
@@ -18,8 +23,7 @@ set -e
 ## If we trigger a new build, terminate the current build so we avoid deploying artifacts
 git commit . -m "Apply optipng compression on all png files" && \
 (
-  git remote add repo "https://${BOT_AUTH_TOKEN}@github.com/DanVanAtta/test.git" &> /dev/null
-  git push --quiet --set-upstream repo master
+  git push --quiet "$REPO_URL" master
   echo "Committed compressed files. Terminating current build to abort deployment"
   exit 1
 )
