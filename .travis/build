@@ -9,8 +9,8 @@ git config --global user.email "tripleabuilderbot@gmail.com"
 git config --global user.name "tripleabuilderbot"
 
 git status
+git branch -m master
 git commit . -m "Apply optipng compression on all png files"
-
 
 git status
 git remote add repo "https://${BOT_AUTH_TOKEN}@github.com/DanVanAtta/test.git" &> /dev/null
