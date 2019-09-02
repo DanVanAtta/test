@@ -1,4 +1,5 @@
 dist: xenial
+if: tag is blank
 jobs:
   include:
     install: skip
