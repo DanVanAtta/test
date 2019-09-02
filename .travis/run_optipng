@@ -16,7 +16,7 @@ set -e
 ## If any files are changed, we'll commit them here
 ## If we commit and push, that will trigger a new build.
 ## If we trigger a new build, terminate the current build so we avoid deploying artifacts
-git commit . -m "Apply optipng compression on all png files" &&
+git commit . -m "Apply optipng compression on all png files" && \
 (
   git remote add repo "https://${BOT_AUTH_TOKEN}@github.com/DanVanAtta/test.git" &> /dev/null
   git push --quiet --set-upstream repo master
