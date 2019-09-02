@@ -22,3 +22,4 @@ git commit . -m "Apply optipng compression on all png files" &&
   exit 1
 )
 
+exit 0
